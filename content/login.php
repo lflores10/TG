@@ -43,7 +43,7 @@
 						<div class="login-container">
 							<div class="center">
 								<h1>
-									<i class="ace-icon fa fa-leaf white"></i>
+									<i class="ace-icon fa fa-leaf yellow"></i>
 									<span class="red">Ace</span>
 									<span class="white" id="id-text2 white">Application</span>
 								</h1>
