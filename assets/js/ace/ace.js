@@ -102,22 +102,10 @@ jQuery(function($) {
 			 
 			 'default_url': 'page/index',//default hash
 			 'content_url': function(hash) {
-				//***NOTE***
-				//this is for Ace demo only, you should change it to return a valid URL
-				//please refer to documentation for more info
-				//
-				// debugger
-
 				if( !hash.match(/^page\//) ) return false;
 				var path = document.location.pathname;
-
-				// return path +'content/'+hash.replace(/^page\//, '')+'.php'
-
-				//for example in Ace HTML demo version we convert /ajax/index.html#page/gallery to > /ajax/content/gallery.html and load it
-				if(path.match(/(\/index\.php)?/))
-					return path.replace(/(\/index\.php)?/, '/content/'+hash.replace(/^page\//, '')+'.php') ;
-
-				//for example in Ace PHP demo version we convert "ajax.php#page/dashboard" to "ajax.php?page=dashboard" and load it
+				if(path.match(/(\/panel\/)(index\.php)?/))
+					return '/panel/content/'+hash.replace(/^page\//, '') ;
 				return path + "?" + hash.replace(/\//, "=");
 			  }			  
 		}

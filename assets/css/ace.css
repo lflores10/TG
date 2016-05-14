@@ -12636,6 +12636,11 @@ td .lbl:only-child {
 .blur-login {
   background: #394557 url('images/meteorshower2.jpg') repeat;
 }
+.blur-login2 {
+  
+  background: #394557 url('images/software13.jpg') repeat;
+  /* background: #394557 url('images/meteorshower2.jpg') repeat; */
+}
 .invoice-info {
   line-height: 24px !important;
   color: #444;
