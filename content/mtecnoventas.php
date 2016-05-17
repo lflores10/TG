@@ -34,7 +34,7 @@
 
 					<ul class="submenu">
 						<li class="">
-							<a data-url="page/typography" href="#page/vendedores?">
+							<a href="#page/vendedores?">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Vendedores
 							</a>
@@ -43,7 +43,7 @@
 					
 						</li>
 						<li class="">
-							<a data-url="page/typography" href="#page/typography?">
+							<a href="./?p=productos&s=<?=$row2['data_sucursal']?>">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Visitas
 							</a>
@@ -52,7 +52,7 @@
 					
 						</li>
 						<li class="">
-							<a data-url="page/typography" href="#page/typography?">
+							<a href="./?p=pedidos&s=<?=$row2['data_sucursal']?>">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Pedidos
 							</a>
@@ -61,7 +61,7 @@
 					
 						</li>
 						<li class="">
-							<a data-url="page/typography" href="#page/typography?">
+							<a href="./?p=cobranzas&s=<?=$row2['data_sucursal']?>">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Cobranzas
 							</a>
@@ -70,7 +70,7 @@
 					
 						</li>
 						<li class="">
-							<a data-url="page/typography" href="#page/typography?">
+							<a href="./?p=mensajes&s=<?=$row2['data_sucursal']?>">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Mensajes
 							</a>
@@ -79,7 +79,7 @@
 					
 						</li>
 						<li class="">
-							<a data-url="page/typography" href="#page/typography?">
+							<a href="./?p=test">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Opciones
 							</a>
@@ -91,7 +91,8 @@
 							<i class="ace-icon fa " data-icon1="ace-icon fa " data-icon2="ace-icon fa "></i>
 						</div>
 						<li class="">
-							<a data-url="page/clientes" href="#page/clientes?">
+							<a href="./?p=clientes&s=<?=$row2['data_sucursal']?>">
+							<!-- <a data-url="page/clientes" href="./?p=clientes"> -->
 								<i class="menu-icon fa fa-caret-right"></i>
 								Clientes
 							</a>
@@ -100,7 +101,7 @@
 					
 						</li>
 						<li class="">
-							<a data-url="page/typography" href="#page/typography?">
+							<a href="./?p=productos&s=<?=$row2['data_sucursal']?>">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Productos
 							</a>
@@ -109,7 +110,7 @@
 					
 						</li>
 						<li class="">
-							<a data-url="page/typography" href="#page/typography?">
+							<a href="./?p=productos&s=<?=$row2['data_sucursal']?>">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Cuentas por cobrar
 							</a>
@@ -118,7 +119,7 @@
 					
 						</li>
 						<li class="">
-							<a data-url="page/typography" href="#page/typography?">
+							<a href="./?p=productos&s=<?=$row2['data_sucursal']?>">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Marcas
 							</a>
@@ -127,7 +128,7 @@
 					
 						</li>
 						<li class="">
-							<a data-url="page/typography" href="#page/typography?">
+							<a href="./?p=productos&s=<?=$row2['data_sucursal']?>">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Categorias
 							</a>
@@ -136,7 +137,7 @@
 					
 						</li>
 						<li class="">
-							<a data-url="page/typography" href="#page/typography?">
+							<a href="./?p=productos&s=<?=$row2['data_sucursal']?>">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Reportes
 							</a>

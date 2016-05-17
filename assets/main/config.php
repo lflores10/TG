@@ -8,17 +8,12 @@ $mysqli_link = mysqli_connect(
 	"12345",
 	"tcmaster") or exit("No se puede conectar");
 
-// $mysqli_link_data = mysqli_connect(
-// 	"localhost",
-// 	"root",
-// 	"12345",
-// 	"tecnoplu_tpdata") or exit("No se puede conectar");
-
 $mysqli_link_data = mysqli_connect(
 	"localhost",
 	"root",
 	"12345",
-	"tecnocomerce") or exit("No se puede conectar");
+	"tecnoplu_tpdata") or exit("No se puede conectar");
+
 
 extract($_GET);
 extract($_POST);
