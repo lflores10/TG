@@ -8,17 +8,12 @@ $mysqli_link = mysqli_connect(
 	"12345",
 	"tcmaster") or exit("No se puede conectar");
 
-// $mysqli_link_data = mysqli_connect(
-// 	"localhost",
-// 	"root",
-// 	"12345",
-// 	"tecnoplu_tpdata") or exit("No se puede conectar");
-
 $mysqli_link_data = mysqli_connect(
 	"localhost",
 	"root",
 	"12345",
-	"tecnocomerce") or exit("No se puede conectar");
+	"tecnoplu_tpdata") or exit("No se puede conectar");
+
 
 extract($_GET);
 extract($_POST);
@@ -40,6 +35,12 @@ function get_status_service($s, $md = false){
 
 }
 
+function getQCli(){
+	return "sc_cliente != ''";
+}
+function getQVen(){
+	return "sc_vendedor !=''";
+}
 function get_data_service($s){
 	global $mysqli_link;
 	$sql=mysqli_query($mysqli_link,"select * from servicios where id='$s' and status = 1");

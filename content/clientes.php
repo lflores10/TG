@@ -1,3 +1,7 @@
+<script type="text/javascript">
+	$('.nav-list li.active').removeClass('active');
+	$('#sidebar li.clientes').addClass('active').parents('.nav-list li').addClass('active');	
+</script>
 
 <title>LISTA DE CLIENTES REGISTRADOS</title>
 
@@ -53,74 +57,78 @@
 	</div><!-- /.col -->
 </div><!-- /.row -->
 
-<!-- page specific plugin scripts -->
+<?
+	// $cli=mysqli_fetch_array(mysqli_query($mysqli_link_data,"select * from scclientes where  sc_vendedor !='' and sc_eliminado=0 and codigo like '$c'"));
+?>
+
+<div class="modal fade" id="clientes" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Programar visita para <em style="color:#39F"><?=$cli["nombre"]?></em></h4>
+      </div>
+      <div class="modal-body">
+			<iframe width="400" height="300" frameborder="0" allowfullscreen=""></iframe>
+      <div class="modal-footer">
+        <a data-dismiss="modal">Close</a>
+        <a title="Programar visita" onclick="guardarCli(this); return false;" ><i class="ace-icon fa fa-floppy-o"></i></a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 <script type="text/javascript">
-	var scripts = [
-		null,
-		"assets/js/dataTables/jquery.dataTables.js",
-		"assets/js/dataTables/dataTables.bootstrap.js",
-		null]
-	$('.page-content-area').ace_ajax('loadScripts', scripts, function() {
-		//inline scripts related to this page
-		jQuery(function($) {
-			//initiate dataTables plugin
-			var oTable1 = $('#dynamic-table').dataTable( {
+			var dt;
+			$(document).ready(function() {
+				dt = $('#dynamic-table').dataTable( {
 				ajax: '/panel/assets/main/exec.php?action=get_clientes',
-				responsive: true,
 				columns: [
 					{ "data": "codigo" },
 					{ "data": "nombre" },
 					{ "data": "cxc" },
-					{ "data": "vend"},
-					{ "data": "uvisita" //,
-				    // 	"render": function (data) {
-				    // 		if (!data) {return "Nunca visitado"}
-				    // 		else {
-								// var date = new Date(convertTimestamp(data));
-								// return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();				    			
-				    // 		}
-				    // 	}
+					{ "data": "vendedor"},
+					{ "data": "uvisita" ,
+				    	"render": function (data) {
+				    		if (!data) {return "Nunca visitado"}
+				    		else {
+								var date = new Date(convertTimestamp(data));
+								return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();				    			
+				    		}
+				    	}
 				    },
-					{ "data": "pvisita" // ,
-				   //  	"render": function (data) {				    		
-				   //  		if (!data) {return "No programada"}
-				   //  		else {
-							// 	var date = new Date(convertTimestamp(data));
-							// 	return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-							// }
-				   //  	}
+					{ "data": "pvisita" ,
+				    	"render": function (data) {				    		
+				    		if (!data) {return "No programada"}
+				    		else {
+								var date = new Date(convertTimestamp(data));
+								return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+							}
+				    	}
+				    },
+					{ "data": "codigo" ,
+				    	"render": function ( data, type, row) {
+				    		var modal = "'"+data+"'"
+				    		return '<a title="Programar visita" onclick="modal('+modal+')" ><i class="ace-icon fa  fa-cogs"></i></a><a title="Programar visita" onclick="modal()" ><i class="ace-icon fa  fa-cogs"></i></a>'							
+				    	}
 				    }
 				],
 				 "language": {
                 "url": "assets/js/dataTables/Spanish.json"
             }
-			} );
+			} )
 		});
-		// function convertTimestamp(timestamp) {
-		//   var d = new Date(timestamp * 1000),	// Convert the passed timestamp to milliseconds
-		// 		yyyy = d.getFullYear(),
-		// 		mm = ('0' + (d.getMonth() + 1)).slice(-2),	// Months are zero based. Add leading 0.
-		// 		dd = ('0' + d.getDate()).slice(-2),			// Add leading 0.
-		// 		hh = d.getHours(),
-		// 		h = hh,
-		// 		min = ('0' + d.getMinutes()).slice(-2),		// Add leading 0.
-		// 		ampm = 'AM',
-		// 		time;
-					
-		// 	if (hh > 12) {
-		// 		h = hh - 12;
-		// 		ampm = 'PM';
-		// 	} else if (hh === 12) {
-		// 		h = 12;
-		// 		ampm = 'PM';
-		// 	} else if (hh == 0) {
-		// 		h = 12;
-		// 	}
-		// 	time = yyyy + '-' + mm + '-' + dd + ', ' + h + ':' + min + ' ' + ampm;
-		// 	return time;
-		// }
-	});
+		
 
-
+		function modal(n) {
+			var frameSrc = "/panel/jcontent/datoscliente.php?c="+n;
+			$('#clientes').modal('show')
+			$('#clientes iframe').attr("src",frameSrc);
+		}
 
 </script>
+<script src="https://www.google.com/jsapi?callback=loadGoogleApi" type="text/javascript"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=true&callback=loadMapApi" type="text/javascript"></script>
+
+

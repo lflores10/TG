@@ -1,0 +1,7 @@
+.dataTables_wrapper .col-sm-12 {
+    padding: 0
+}
+.modal iframe {
+    width: 100%;
+    height: 100%;
+}
