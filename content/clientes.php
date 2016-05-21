@@ -110,7 +110,7 @@
 					{ "data": "codigo" ,
 				    	"render": function ( data, type, row) {
 				    		var modal = "'"+data+"'"
-				    		return '<a title="Programar visita" onclick="modal('+modal+')" ><i class="ace-icon fa  fa-cogs"></i></a><a title="Programar visita" onclick="modal()" ><i class="ace-icon fa  fa-cogs"></i></a>'							
+				    		return '<a title="Programar visita" onclick="modal('+modal+')" ><i class="ace-icon fa  fa-cogs"></i></a><a title="Programar visita" onclick="modal()" ><i class="ace-icon fa  fa-cogs"></i></a>'
 				    	}
 				    }
 				],
@@ -119,8 +119,6 @@
             }
 			} )
 		});
-		
-
 		function modal(n) {
 			var frameSrc = "/panel/jcontent/datoscliente.php?c="+n;
 			$('#clientes').modal('show')

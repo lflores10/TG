@@ -30,6 +30,41 @@ if($action){
 				// $row['actions']='<a class="btn btn-xs btn-info" title="Editar"><i class="fa fa-edit"></i> Editar</a>';
 				$data["data"][]=$row;
 			}
+			break;case 'get_cobranzas':
+			
+			$strq="1";
+
+			if($_SESSION['user']['tipo']=='franquicia'){
+				$strq=" franquicia = '".$_SESSION['user']['data']['id']."'";
+			}
+
+				$eqSel="select
+						scvisitas.*, 
+					    inicio as fecha,
+						corcobranza as ncobra,
+					 	(fin-inicio) as duracion,
+					 	(select count(*) from scdepositos where cobranzas like concat('%',scvisitas.corcobranza,',%') and scdepositos.sc_vendedor=scvisitas.sc_vendedor) as deps,
+					 	(select count(*) from documentosgestion where documento = scvisitas.codigo and status=1 and tipo = 'cob') as cacob,
+					 	(select count(*) from scfotosvisita where visita=scvisitas.codigo) as fots,
+						(select nombre from scclientes where scclientes.codigo = scvisitas.cliente and scclientes.sc_vendedor=scvisitas.sc_vendedor limit 1) as nombre,
+						/*(select nombre from vendedores where id=sc_vendedor) as vendedor,*/
+						(select sum(monto) from sccobranzafacturas where visita = scvisitas.codigo and sccobranzafacturas.sc_vendedor=scvisitas.sc_vendedor) as mpag
+					from 
+						scvisitas 
+					where 
+						 sc_vendedor !='' and 
+					     sc_eliminado=0
+					     /*".($vnd!=""?" and sc_vendedor='$vnd'":'').$add." 
+					     and (CAST(FROM_UNIXTIME(sc_creado) as date) between '$fd' and '$fh')*/ 
+					     and length(corcobranza)>2";
+
+			$sql=mysqli_query($mysqli_link_data,$eqSel);
+			while($row=mysqli_fetch_array($sql,MYSQLI_ASSOC)){
+				$row['clave']='';
+				// $row['rid']='<small>'.get_uid($row['id']).'</smal>';
+				// $row['actions']='<a class="btn btn-xs btn-info" title="Editar"><i class="fa fa-edit"></i> Editar</a>';
+				$data["data"][]=$row;
+			}
 			break;
 		case 'get_cobranzas':
 			
