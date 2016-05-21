@@ -1,4 +1,5 @@
 <!-- #section:basics/navbar.layout -->
+    <!-- <div id="navbar" class="navbar navbar-default" style="background-color: #F0F0F0"> -->
     <div id="navbar" class="navbar navbar-default" style="background-color: #0E7C80">
       <script type="text/javascript">
         try{ace.settings.check('navbar' , 'fixed')}catch(e){}

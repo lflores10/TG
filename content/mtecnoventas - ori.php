@@ -82,58 +82,74 @@
 							<a href="./?p=opciones&s=<?=$row2['data_sucursal']?>">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Opciones
-							</a>					
-							<b class="arrow"></b>					
+							</a>
+					
+							<b class="arrow"></b>
+					
 						</li>
 						<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 							<i class="ace-icon fa " data-icon1="ace-icon fa " data-icon2="ace-icon fa "></i>
 						</div>
-						<li class="clientes">
+						<li class="">
 							<a href="./?p=clientes&s=<?=$row2['data_sucursal']?>">
 							<!-- <a data-url="page/clientes" href="./?p=clientes"> -->
 								<i class="menu-icon fa fa-caret-right"></i>
 								Clientes
-							</a>					
-							<b class="arrow"></b>					
+							</a>
+					
+							<b class="arrow"></b>
+					
 						</li>
-						<li class="productos">
+						<li class="">
 							<a href="./?p=productos&s=<?=$row2['data_sucursal']?>">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Productos
-							</a>					
-							<b class="arrow"></b>					
+							</a>
+					
+							<b class="arrow"></b>
+					
 						</li>
-						<li class="cxc">
-							<a href="./?p=cxc&s=<?=$row2['data_sucursal']?>">
+						<li class="">
+							<a href="./?p=productos&s=<?=$row2['data_sucursal']?>">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Cuentas por cobrar
-							</a>					
-							<b class="arrow"></b>					
+							</a>
+					
+							<b class="arrow"></b>
+					
 						</li>
 						<li class="">
 							<a href="./?p=productos&s=<?=$row2['data_sucursal']?>">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Marcas
-							</a>					
-							<b class="arrow"></b>					
+							</a>
+					
+							<b class="arrow"></b>
+					
 						</li>
 						<li class="">
 							<a href="./?p=productos&s=<?=$row2['data_sucursal']?>">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Categorias
-							</a>					
-							<b class="arrow"></b>					
+							</a>
+					
+							<b class="arrow"></b>
+					
 						</li>
 						<li class="">
 							<a href="./?p=productos&s=<?=$row2['data_sucursal']?>">
 								<i class="menu-icon fa fa-caret-right"></i>
 								Reportes
-							</a>					
-							<b class="arrow"></b>					
+							</a>
+					
+							<b class="arrow"></b>
+					
 						</li>
 					</ul>
 		
 				</li>
 		<? } ?> 
 		</ul>
+
+
 	</li>

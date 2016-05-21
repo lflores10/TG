@@ -2196,7 +2196,11 @@
 
 <!-- page specific plugin scripts -->
 <script type="text/javascript">
-	var scripts = [null,"assets/js/dataTables/jquery.dataTables.js","assets/js/dataTables/jquery.dataTables.bootstrap.js","assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js","assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js", null]
+	var scripts = [
+		null,
+		"assets/js/dataTables/jquery.dataTables.js",
+		"assets/js/dataTables/dataTables.bootstrap.js",
+		null]
 	$('.page-content-area').ace_ajax('loadScripts', scripts, function() {
 	  //inline scripts related to this page
 		 jQuery(function($) {

@@ -1,4 +1,7 @@
-
+<script type="text/javascript">
+	$('.nav-list li.active').removeClass('active');
+	$('#sidebar li.productos').addClass('active').parents('.nav-list li').addClass('active');	
+</script>
 <title>LISTA DE CLIENTES REGISTRADOS</title>
 
 <!-- ajax layout which only needs content area -->
