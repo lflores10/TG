@@ -128,12 +128,20 @@ if($action){
 
 			$sql=mysqli_query($mysqli_link_data,$eqSel);
 			while($row=mysqli_fetch_array($sql,MYSQLI_ASSOC)){
-				$row['clave']='';
+				// $row['clave']='';
 				// $row['rid']='<small>'.get_uid($row['id']).'</smal>';
 				// $row['actions']='<a class="btn btn-xs btn-info" title="Editar"><i class="fa fa-edit"></i> Editar</a>';
 				$data["data"][]=$row;
 			}
 		break;
+		case 'get_productos':
+			$eqSel = "select * from scproductos where ".getQCli()." and sc_eliminado=0 and sc_cliente = 2" ;//.$_SESSION['user']['data']['id'];
+			$sql=mysqli_query($mysqli_link_data,$eqSel);
+			$data['count']=mysqli_num_rows($sql);
+			while($row=mysqli_fetch_array($sql,MYSQLI_ASSOC)){
+				$data["data"][]=$row;
+			}
+			break;
 		default;
 	}
 }

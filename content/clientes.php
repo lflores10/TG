@@ -44,7 +44,7 @@
 								<th>Vendedor</th>
 								<th>Ultima Visita</th>
 								<th>Proxima Visita</th>
-								<th></th>
+								<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -66,14 +66,10 @@
     <div class="modal-content modal-lg">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">Programar visita para <em style="color:#39F"><?=$cli["nombre"]?></em></h4>
       </div>
       <div class="modal-body">
-			<iframe width="400" height="300" frameborder="0" allowfullscreen=""></iframe>
-      <div class="modal-footer">
-        <a data-dismiss="modal">Close</a>
-        <a title="Programar visita" onclick="guardarCli(this); return false;" ><i class="ace-icon fa fa-floppy-o"></i></a>
-      </div>
+			<!-- <iframe width="400" height="300" frameborder="0" allowfullscreen=""></iframe> -->
+
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
@@ -87,7 +83,16 @@
 				columns: [
 					{ "data": "codigo" },
 					{ "data": "nombre" },
-					{ "data": "cxc" },
+					{ "data": "cxc" ,
+						"render": function (data) {
+							if (data>0) {
+								return data
+							} else {
+								return '---'	
+							}
+							
+						}
+					},
 					{ "data": "vendedor"},
 					{ "data": "uvisita" ,
 				    	"render": function (data) {
@@ -99,18 +104,25 @@
 				    	}
 				    },
 					{ "data": "pvisita" ,
-				    	"render": function (data) {				    		
-				    		if (!data) {return "No programada"}
-				    		else {
-								var date = new Date(convertTimestamp(data));
+				    	"render": function (data, type, row) {
+				    		var page = "'gvisita'"		    		
+				    		if (data) {
+				    			return data
+								var date = new Date(data);
 								return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+				    		}
+				    		else {
+				    			var cod = "'"+row.codigo+"'"
+				    			var cita = '<a title="Programar visita" onclick="modal('+page+','+cod+')" ><i class="ace-icon fa  fa-cogs"></i></a>'
+				    			return "No programada" + cita
 							}
 				    	}
 				    },
 					{ "data": "codigo" ,
 				    	"render": function ( data, type, row) {
+				    		var page1 = "'datoscliente'"
 				    		var modal = "'"+data+"'"
-				    		return '<a title="Programar visita" onclick="modal('+modal+')" ><i class="ace-icon fa  fa-cogs"></i></a><a title="Programar visita" onclick="modal()" ><i class="ace-icon fa  fa-cogs"></i></a>'
+				    		return '<a title="Programar visita" onclick="modal()" ><i class="ace-icon fa  fa-cogs"></i></a>'
 				    	}
 				    }
 				],
@@ -119,14 +131,15 @@
             }
 			} )
 		});
-		function modal(n) {
-			var frameSrc = "/panel/jcontent/datoscliente.php?c="+n;
-			$('#clientes').modal('show')
-			$('#clientes iframe').attr("src",frameSrc);
+		function modal(page,n) {
+			$('#clientes .modal-body').load('jcontent/'+page+'.php?c='+ n
+			,function( response, status, xhr ) {
+				$('#clientes').modal('show')
+			});
 		}
 
 </script>
-<script src="https://www.google.com/jsapi?callback=loadGoogleApi" type="text/javascript"></script>
-<script src="http://maps.google.com/maps/api/js?sensor=true&callback=loadMapApi" type="text/javascript"></script>
+<!-- <script src="https://www.google.com/jsapi?callback=loadGoogleApi" type="text/javascript"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=true&callback=loadMapApi" type="text/javascript"></script> -->
 
 

@@ -1,4 +1,6 @@
 <?
+
+	session_start();
 date_default_timezone_set('America/Caracas');
 header('Content-Type: text/html; charset=UTF-8');
 

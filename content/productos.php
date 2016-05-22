@@ -37,12 +37,9 @@
 					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr>
-								<th>Codigo</th>
-								<th>Nombre</th>
-								<th>Estado de Cuenta</th>
-								<th>Vendedor</th>
-								<th>Ultima Visita</th>
-								<th>Proxima Visita</th>
+								<th>Foto</th>
+								<th>Descripcion</th>
+								<th>varios -.-!</th>
 								<th></th>
 							</tr>
 						</thead>
@@ -58,73 +55,40 @@
 
 <!-- page specific plugin scripts -->
 <script type="text/javascript">
-	var scripts = [
-		null,
-		"assets/js/dataTables/jquery.dataTables.js",
-		"assets/js/dataTables/dataTables.bootstrap.js",
-		null]
-	$('.page-content-area').ace_ajax('loadScripts', scripts, function() {
-		//inline scripts related to this page
-		jQuery(function($) {
-			//initiate dataTables plugin
-			var oTable1 = $('#dynamic-table').dataTable( {
-				ajax: '/panel/assets/main/exec.php?action=get_clientes',
-				responsive: true,
+	var dt;
+			$(document).ready(function() {
+				dt = $('#dynamic-table').dataTable( {
+				ajax: '/panel/assets/main/exec.php?action=get_productos',
 				columns: [
-					{ "data": "codigo" },
-					{ "data": "nombre" },
-					{ "data": "cxc" },
-					{ "data": "vend"},
-					{ "data": "uvisita" ,
-				    	"render": function (data) {
-				    		if (!data) {return "Nunca visitado"}
-				    		else {
-								var date = new Date(convertTimestamp(data));
-								return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();				    			
-				    		}
+					{ "data": null ,
+				    	"render": function ( data, type, row) {
+								return "foto aqui ";
 				    	}
-				    },
-					{ "data": "pvisita"  ,
-				    	"render": function (data) {				    		
-				    		if (!data) {return "No programada"}
-				    		else {
-								var date = new Date(convertTimestamp(data));
-								return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-							}
-				    	}}
+				   },{ 
+				   	"data": null ,
+				    	"render": function ( data, type, row) {
+								htm = '<span style="font-size:20px;" >'+row.nombre+'</span><br/>'
+								htm += '<span style="font-size:12px;color:#555;">Codigo: '+row.codigo+'</span><br/>'
+								htm += '<span style="font-size:12px;color:green;">Precio: '+row.precio+'</span><br/>'
+								htm += '<span style="font-size:12px;color:#555;">Existencia: '+row.existencia+'</span>'
+								return htm;
+				    	}
+				   },{ 
+				   	"data": null ,
+				    	"render": function ( data, type, row) {
+								html = '<ul class="dropdown-menu dropdown-danger" style="display: block;position: static;">'
+								html += '   <li  class="dropup dropdown-hover"><i class="fa fa-tasks fa-2x fa-fw"></i>'
+								html += '  <ul class="dropdown-menu dropdown-menu-left"> <li><a tabindex="-1" href="#">Another action</a></li>'
+								html += '   <li><a tabindex="-1" href="#">Something else here</a></li>'
+								html += ' </ul></li></ul>'
+								return html;
+				    	}
+				   }
 				],
 				 "language": {
                 "url": "assets/js/dataTables/Spanish.json"
             }
-			} );
+			} )
 		});
-		});
-
-function convertTimestamp(timestamp) {
-  var d = new Date(timestamp * 1000),	// Convert the passed timestamp to milliseconds
-		yyyy = d.getFullYear(),
-		mm = ('0' + (d.getMonth() + 1)).slice(-2),	// Months are zero based. Add leading 0.
-		dd = ('0' + d.getDate()).slice(-2),			// Add leading 0.
-		hh = d.getHours(),
-		h = hh,
-		min = ('0' + d.getMinutes()).slice(-2),		// Add leading 0.
-		ampm = 'AM',
-		time;
-			
-	if (hh > 12) {
-		h = hh - 12;
-		ampm = 'PM';
-	} else if (hh === 12) {
-		h = 12;
-		ampm = 'PM';
-	} else if (hh == 0) {
-		h = 12;
-	}
-	
-	// ie: 2013-02-18, 8:35 AM	
-	time = yyyy + '-' + mm + '-' + dd + ', ' + h + ':' + min + ' ' + ampm;
-		
-	return time;
-}
 
 </script>
